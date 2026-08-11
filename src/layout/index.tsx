@@ -55,9 +55,9 @@ const Layout = async (props: LayoutProps) => {
     <StyleRegistry>
       <Locale antdLocale={antdLocale} defaultLang={userLocale}>
         <AppTheme
-          defaultAppearance={appearance?.value}
+          defaultAppearance={appearance?.value || 'dark'}
           defaultNeutralColor={neutralColor?.value as any}
-          defaultPrimaryColor={primaryColor?.value as any}
+          defaultPrimaryColor={(primaryColor?.value || 'blue') as any}
         >
           <StoreHydration />
           {children}

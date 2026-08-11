@@ -8,6 +8,7 @@ import { sessionSelectors, useSessionStore } from '@/store/session';
 
 import SkeletonList from './SkeletonList';
 import Welcome from './WelcomeMessage';
+import { useStyles } from './style';
 
 const Loading = () => (
   <div style={{ margin: '0 auto' }}>
@@ -22,12 +23,14 @@ const ChatList = dynamic(() => import('./VirtualizedList'), {
 
 const Conversation = memo(() => {
   const { mobile } = useResponsive();
+  const { styles } = useStyles();
 
   const data = useSessionStore((s) => sessionSelectors.currentChatIDs(s), isEqual);
 
   return (
     <Flexbox
       flex={1}
+      className={styles.conversation}
       style={{
         overflowX: 'hidden',
         overflowY: 'auto',

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 
 import pkg from '../../package.json';
 
-const title = 'Lobe Vidol';
+const title = '星轨资料终端';
 const { description, homepage } = pkg;
 
 const metadata: Metadata = {
@@ -48,7 +48,7 @@ const metadata: Metadata = {
 
   title: {
     default: title,
-    template: '%s · Vidol',
+    template: '%s · 星轨资料终端',
   },
 };
 

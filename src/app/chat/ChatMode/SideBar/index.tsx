@@ -3,7 +3,6 @@
 import { DraggablePanel } from '@lobehub/ui';
 import { createStyles, useResponsive } from 'antd-style';
 import isEqual from 'lodash-es/isEqual';
-import { rgba } from 'polished';
 import { memo, useEffect, useState } from 'react';
 
 import { SIDEBAR_WIDTH } from '@/constants/token';
@@ -12,7 +11,7 @@ import { useGlobalStore } from '@/store/global';
 import ChatHeader from './ChatHeader';
 import SessionList from './SessionList';
 
-const useStyles = createStyles(({ css, token }) => ({
+const useStyles = createStyles(({ css }) => ({
   content: css`
     display: flex;
     flex-direction: column;
@@ -20,8 +19,10 @@ const useStyles = createStyles(({ css, token }) => ({
   `,
   sidebar: css`
     z-index: 10;
-    background-color: ${rgba(token.colorBgLayout, 0.2)};
-    backdrop-filter: saturate(180%) blur(8px);
+    border-right: 1px solid rgb(139 188 255 / 18%);
+    background: linear-gradient(180deg, rgb(14 26 56 / 96%), rgb(7 13 31 / 94%));
+    box-shadow: 12px 0 44px rgb(0 0 0 / 16%);
+    backdrop-filter: saturate(180%) blur(18px);
   `,
 }));
 

@@ -47,6 +47,7 @@ export default (props: Props) => {
         </div>
       </Flexbox>
       <Space className={styles.actions}>
+        <span className={styles.terminalStatus}>星轨资料终端 · 已同步</span>
         <ShareButton key={'share'} />
         <ToggleChatInfo />
       </Space>

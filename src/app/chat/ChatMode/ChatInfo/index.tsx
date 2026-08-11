@@ -3,7 +3,6 @@ import { Skeleton, Space } from 'antd';
 import { createStyles, useResponsive } from 'antd-style';
 import isEqual from 'lodash-es/isEqual';
 import dynamic from 'next/dynamic';
-import { rgba } from 'polished';
 import React, { memo, useEffect, useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
@@ -26,7 +25,7 @@ const AgentDetail = dynamic(() => import('./AgentDetail'), {
   ),
 });
 
-const useStyles = createStyles(({ css, token }) => ({
+const useStyles = createStyles(({ css }) => ({
   content: css`
     display: flex;
     flex-direction: column;
@@ -34,8 +33,13 @@ const useStyles = createStyles(({ css, token }) => ({
   `,
   drawer: css`
     z-index: 10;
-    background-color: ${rgba(token.colorBgLayout, 0.2)};
-    backdrop-filter: saturate(180%) blur(8px);
+    border-left: 1px solid rgb(139 188 255 / 18%);
+    background:
+      linear-gradient(180deg, rgb(21 10 35 / 48%), rgb(9 13 32 / 92%) 72%, rgb(7 13 31 / 98%)),
+      linear-gradient(90deg, rgb(20 11 44 / 22%), rgb(20 11 44 / 22%)),
+      url('/elysia-profile-background.png') center top / cover no-repeat;
+    box-shadow: -12px 0 44px rgb(0 0 0 / 16%);
+    backdrop-filter: saturate(180%) blur(18px);
   `,
 }));
 
