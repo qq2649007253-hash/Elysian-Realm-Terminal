@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import React from 'react';
 import { Flexbox } from 'react-layout-kit';
 
+import { STARRAIL_AVATAR_URL } from '@/constants/common';
 import { Agent } from '@/types/agent';
 
 import { useStyles } from './style';
@@ -22,7 +23,7 @@ export default (props: Props) => {
 
   const { actions = [], agent, extra, footer, className, style } = props;
   const { meta } = agent || {};
-  const { avatar, name, description } = meta || {};
+  const { name, description } = meta || {};
 
   return (
     <Flexbox
@@ -33,7 +34,7 @@ export default (props: Props) => {
       align={'center'}
     >
       <Avatar
-        avatar={avatar}
+        avatar={STARRAIL_AVATAR_URL}
         background={theme.colorFillTertiary}
         className={styles.avatar}
         size={100}

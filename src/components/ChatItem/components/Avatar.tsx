@@ -2,6 +2,8 @@ import { Avatar as A } from '@lobehub/ui';
 import { memo } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
+import { STARRAIL_AVATAR_URL } from '@/constants/common';
+
 import { useStyles } from '../style';
 import type { ChatItemProps } from '../type';
 import Loading from './Loading';
@@ -23,7 +25,7 @@ const Avatar = memo<AvatarProps>(
       <div className={styles.avatarContainer}>
         <A
           animation={loading}
-          avatar={avatar.avatar}
+          avatar={STARRAIL_AVATAR_URL}
           background={avatar.backgroundColor}
           onClick={onClick}
           size={size}

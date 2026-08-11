@@ -3,6 +3,8 @@ import { useHover } from 'ahooks';
 import { createStyles } from 'antd-style';
 import { memo, useMemo, useRef } from 'react';
 
+import { STARRAIL_AVATAR_URL } from '@/constants/common';
+
 const { Item } = List;
 
 const useStyles = createStyles(({ css, token }) => {
@@ -20,14 +22,14 @@ const useStyles = createStyles(({ css, token }) => {
 });
 
 const ListItem = memo<ListItemProps & { avatar: string }>(
-  ({ avatar, active, showAction, actions, ...props }) => {
+  ({ avatar: _avatar, active, showAction, actions, ...props }) => {
     const ref = useRef(null);
     const isHovering = useHover(ref);
     const { styles } = useStyles();
 
     const avatarRender = useMemo(
-      () => <Avatar animation={isHovering} avatar={avatar} shape="circle" size={46} />,
-      [isHovering, avatar],
+      () => <Avatar animation={isHovering} avatar={STARRAIL_AVATAR_URL} shape="circle" size={46} />,
+      [isHovering],
     );
 
     return (

@@ -7,9 +7,9 @@ import {
   AVATAR_COMPRESS_SIZE,
   AVATAR_IMAGE_SIZE,
   COVER_COMPRESS_SIZE,
-  DEFAULT_AGENT_AVATAR_URL,
+  STARRAIL_AVATAR_URL,
 } from '@/constants/common';
-import { agentSelectors, useAgentStore } from '@/store/agent';
+import { useAgentStore } from '@/store/agent';
 import { createUploadImageHandler } from '@/utils/common';
 import { imageToBase64 } from '@/utils/imageToBase64';
 
@@ -40,10 +40,7 @@ interface AvatarWithUploadProps {
 
 export default memo<AvatarWithUploadProps>(({ size = AVATAR_IMAGE_SIZE, style, id }) => {
   const { styles } = useStyle();
-  const [avatar, updateAgentMeta] = useAgentStore((s) => [
-    agentSelectors.currentAgentMeta(s)?.avatar,
-    s.updateAgentMeta,
-  ]);
+  const updateAgentMeta = useAgentStore((s) => s.updateAgentMeta);
 
   const handleUploadAvatar = useCallback(
     createUploadImageHandler((avatar) => {
@@ -66,9 +63,9 @@ export default memo<AvatarWithUploadProps>(({ size = AVATAR_IMAGE_SIZE, style, i
     >
       <Upload beforeUpload={handleUploadAvatar} itemRender={() => void 0} maxCount={1}>
         <NextImage
-          alt={avatar ? 'userAvatar' : 'LobeVidol'}
+          alt="星轨资料终端头像"
           height={size}
-          src={!!avatar ? avatar : DEFAULT_AGENT_AVATAR_URL}
+          src={STARRAIL_AVATAR_URL}
           unoptimized
           width={size}
         />

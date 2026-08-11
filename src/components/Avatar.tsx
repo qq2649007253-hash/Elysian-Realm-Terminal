@@ -1,7 +1,7 @@
 import { createStyles } from 'antd-style';
 import NextImage from 'next/image';
 
-import { AVATAR_IMAGE_SIZE, DEFAULT_USER_AVATAR_URL } from '@/constants/common';
+import { AVATAR_IMAGE_SIZE, STARRAIL_AVATAR_URL } from '@/constants/common';
 
 const useStyle = createStyles(
   ({ css, token }) => css`
@@ -28,14 +28,14 @@ interface Props {
 }
 
 export default (props: Props) => {
-  const { size = AVATAR_IMAGE_SIZE, avatar } = props;
+  const { size = AVATAR_IMAGE_SIZE } = props;
   const { styles } = useStyle();
   return (
     <NextImage
       className={styles}
-      alt={avatar ? 'userAvatar' : 'LobeVidol'}
+      alt="星轨资料终端头像"
       height={size}
-      src={!!avatar ? avatar : DEFAULT_USER_AVATAR_URL}
+      src={STARRAIL_AVATAR_URL}
       unoptimized
       width={size}
     />

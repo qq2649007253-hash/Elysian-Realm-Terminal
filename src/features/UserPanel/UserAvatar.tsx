@@ -4,7 +4,7 @@ import { Avatar, type AvatarProps } from '@lobehub/ui';
 import { createStyles } from 'antd-style';
 import { forwardRef } from 'react';
 
-import { DEFAULT_USER_AVATAR_URL } from '@/constants/common';
+import { STARRAIL_AVATAR_URL } from '@/constants/common';
 import { useSettingStore } from '@/store/setting';
 
 const useStyles = createStyles(({ css, token }) => ({
@@ -46,13 +46,13 @@ export interface UserAvatarProps extends AvatarProps {
 const UserAvatar = forwardRef<HTMLDivElement, UserAvatarProps>(
   ({ size = 40, background, clickable, className, style, ...rest }, ref) => {
     const { styles, cx } = useStyles();
-    const [avatar, nickName] = useSettingStore((s) => [s.config.avatar, s.config.nickName]);
+    const nickName = useSettingStore((s) => s.config.nickName);
 
     return (
       <Avatar
         alt={nickName}
-        avatar={avatar || DEFAULT_USER_AVATAR_URL}
-        background={avatar ? background : undefined}
+        avatar={STARRAIL_AVATAR_URL}
+        background={background}
         className={cx(clickable && styles.clickable, className)}
         ref={ref}
         size={size}

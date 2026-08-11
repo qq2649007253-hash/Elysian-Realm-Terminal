@@ -37,11 +37,11 @@ export const COVER_COMPRESS_SIZE = COVER_IMAGE_SIZE * 2;
  */
 export const VRM_TO_MMD_SCALE = 0.085;
 
-export const DEFAULT_USER_AVATAR_URL =
-  'https://registry.npmmirror.com/@lobehub/assets-logo/1.2.0/files/assets/logo-3d.webp';
+export const STARRAIL_AVATAR_URL = '/starrail-avatar.png';
 
-export const DEFAULT_AGENT_AVATAR_URL =
-  'https://registry.npmmirror.com/@lobehub/assets-logo/1.2.0/files/assets/logo-3d.webp';
+export const DEFAULT_USER_AVATAR_URL = STARRAIL_AVATAR_URL;
+
+export const DEFAULT_AGENT_AVATAR_URL = STARRAIL_AVATAR_URL;
 export const ROLE_VIEWER_HEIGHT = 800;
 export const ROLE_VIEWER_WIDTH = 480;
 
