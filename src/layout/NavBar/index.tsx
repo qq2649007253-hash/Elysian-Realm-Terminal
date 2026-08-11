@@ -2,7 +2,7 @@
 
 import { ActionIcon, SideNav } from '@lobehub/ui';
 import { theme } from 'antd';
-import { Compass, MessageSquare, User } from 'lucide-react';
+import { MessageSquare, Sparkles, User } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { memo, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -38,9 +38,9 @@ const NavBar = () => {
       },
       {
         key: HeaderNavKey.Discover,
-        icon: Compass,
-        label: t('header.discover'),
-        title: t('header.discover'),
+        icon: Sparkles,
+        label: '星穹图鉴',
+        title: '星穹角色图鉴',
       },
     ];
   }, [t]);
