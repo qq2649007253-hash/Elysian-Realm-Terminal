@@ -44,6 +44,7 @@ function AgentViewer(props: Props) {
   const { styles } = useStyles();
   const ref = useRef<HTMLDivElement>(null);
   const viewer = useGlobalStore((s) => s.viewer);
+  const voiceOn = useGlobalStore((s) => s.voiceOn);
   const { t } = useTranslation('welcome');
 
   const { fetchModelUrl, percent: modelPercent } = useLoadModel();
@@ -81,7 +82,9 @@ function AgentViewer(props: Props) {
               viewer.model?.loadIdleAnimation();
             },
             onError: () => {
-              message.error(t('ttsTransformFailed', { ns: 'error' }));
+              // TTS is optional in video mode. Keep the model usable if the
+              // online speech provider cannot be reached.
+              viewer.model?.loadIdleAnimation();
             },
           },
         );
@@ -111,6 +114,8 @@ function AgentViewer(props: Props) {
 
       setLoadingStep(3);
       // 加载步骤三：加载语音
+      if (!voiceOn) return;
+
       let voiceCount = 0;
       let totalVoices = 0;
 
@@ -132,7 +137,7 @@ function AgentViewer(props: Props) {
         await preloadVoice({
           ...agent.tts,
           message: agent.greeting,
-        });
+        }).catch(() => undefined);
         voiceCount++;
         setVoiceLoadingProgress((voiceCount / totalVoices) * 100);
       }
@@ -144,7 +149,7 @@ function AgentViewer(props: Props) {
             await preloadVoice({
               ...agent!.tts,
               message: action.text,
-            });
+            }).catch(() => undefined);
             voiceCount++;
             setVoiceLoadingProgress((voiceCount / totalVoices) * 100);
           }
@@ -165,7 +170,7 @@ function AgentViewer(props: Props) {
       if (canvas) {
         viewer.setup(canvas, handleTouchArea);
         preloadAgentResources().then(() => {
-          if (interactive) {
+          if (interactive && voiceOn) {
             // load motion
             speakCharacter(
               {
@@ -183,7 +188,6 @@ function AgentViewer(props: Props) {
                 },
                 onError: () => {
                   viewer.resetToIdle();
-                  message.error(t('ttsTransformFailed', { ns: 'error' }));
                 },
               },
             );
