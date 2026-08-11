@@ -16,6 +16,7 @@ import { StateCreator } from 'zustand/vanilla';
 import {
   DEFAULT_AGENT_CONFIG,
   DEFAULT_LLM_CONFIG,
+  LOBE_VIDOL_DEFAULT_AGENT,
   LOBE_VIDOL_DEFAULT_AGENT_ID,
 } from '@/constants/agent';
 import { DEFAULT_AGENT_AVATAR_URL } from '@/constants/common';
@@ -235,7 +236,11 @@ const createAgentStore: StateCreator<AgentStore, [['zustand/devtools', never]]> 
 const persistOptions: PersistOptions<AgentStore> = {
   name: AGENT_STORAGE_KEY, // name of the item in the storage (must be unique)
   storage: createJSONStorage(() => vidolStorage),
-  version: 0,
+  version: 2,
+  migrate: (persistedState) => ({
+    ...(persistedState as AgentStore),
+    defaultAgent: LOBE_VIDOL_DEFAULT_AGENT,
+  }),
   // skipHydration: true,
 };
 

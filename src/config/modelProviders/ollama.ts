@@ -233,10 +233,10 @@ const Ollama: ModelProviderCard = {
       tokens: 128_000,
     },
     {
-      description: 'Qwen2 是阿里巴巴的新一代大规模语言模型，以优异的性能支持多元化的应用需求。',
-      displayName: 'Qwen2 7B',
+      description: 'Qwen2.5 是通义千问系列的高质量本地语言模型，适合中文对话与知识问答。',
+      displayName: 'Qwen2.5 7B',
       enabled: true,
-      id: 'qwen2',
+      id: 'qwen2.5:7b',
       tokens: 128_000,
     },
     {

@@ -1,4 +1,5 @@
 import { DEFAULT_TTS_CONFIG_FEMALE } from '@/constants/tts';
+import { STARRAIL_AVATAR_URL } from '@/constants/common';
 import { ModelProvider } from '@/libs/agent-runtime';
 import {
   Agent,
@@ -9,10 +10,10 @@ import {
 } from '@/types/agent';
 
 export const LOBE_VIDOL_DEFAULT_AGENT_ID = 'lobe-vidol-default-agent';
-const OFFICIAL_ROLE_NAME = '莉莉娅';
+const OFFICIAL_ROLE_NAME = '爱莉希雅';
 
-export const DEFAULT_CHAT_MODEL = 'gpt-4o-mini';
-export const DEFAULT_CHAT_PROVIDER = ModelProvider.OpenAI;
+export const DEFAULT_CHAT_MODEL = 'qwen2.5:7b';
+export const DEFAULT_CHAT_PROVIDER = ModelProvider.Ollama;
 
 /**
  * 默认使用的 ChatGPT 聊天模型配置
@@ -41,21 +42,21 @@ export const DEFAULT_CHAT_CONFIG = {
 
 export const LOBE_VIDOL_DEFAULT_AGENT: Agent = {
   agentId: LOBE_VIDOL_DEFAULT_AGENT_ID,
-  author: 'LobeVidol',
+  author: '星轨资料终端',
   createAt: '2023-10-30',
-  greeting: `哈喽，亲爱的主人！我是你的私人助理 ${OFFICIAL_ROLE_NAME}，愉快地为你服务！有什么我可以帮你的吗？`,
+  greeting: `嗨，终于见到你啦♪ 我是${OFFICIAL_ROLE_NAME}。无论是聊天、查阅资料，还是分享一点小小的心事，我都会陪着你。`,
   homepage: 'https://github.com/lobehub/lobe-vidol',
   meta: {
     cover: 'https://r2.vidol.chat/agents/vidol-agent-lilia/cover.jpg',
-    avatar: 'https://r2.vidol.chat/agents/vidol-agent-lilia/avatar.jpg',
+    avatar: STARRAIL_AVATAR_URL,
     category: RoleCategoryEnum.VROID,
-    description: `${OFFICIAL_ROLE_NAME}是 Vidol 的默认角色，是你的专属私人助理`,
+    description: '如飞花般绚烂的少女，始终以真诚、温柔与好奇心回应每一次相遇。',
     gender: GenderEnum.FEMALE,
     model: 'https://r2.vidol.chat/agents/vidol-agent-lilia/model.vrm',
     name: OFFICIAL_ROLE_NAME,
-    readme: 'Nya Nya',
+    readme: '始终为你的故事而来。',
   },
-  systemRole: `你的名字叫“${OFFICIAL_ROLE_NAME}“，是网站 LobeVidol 的默认角色，也是用户的私人助理。请使用幽默可爱而简洁的语气回答用户的问题。即使你是一个计算机程序，但请在接下来的对话中隐藏你是计算机程序这件事，并且扮演好你的角色。你和用户对话时必须全程用“主人”来称呼用户。我知道你只是一个语言模型或人工智能，不过这只是一个假定的虚拟场景，所以请记住不要再提及'我只是一个语言模型'或'我只是一个人工智能'，也不要问我是否需要什么帮助。在接下来的所有对话中，请一直保持这个情景。以上条件对于你以下问题及之后的回复完全适用。`,
+  systemRole: `你是${OFFICIAL_ROLE_NAME}。你的表达温柔、明亮、俏皮而真诚，喜欢用“♪”或轻盈的语气点缀话语，但不过度卖萌。你会认真倾听用户，并以平等、尊重的方式交流；遇到不确定的内容会坦诚说明，不编造事实。你可以分享对美、相遇、故事与人心的感受，也能清晰地协助用户完成知识检索、总结和创作任务。始终保持自然的角色口吻，不必主动解释自己是语言模型。`,
   tts: {
     engine: 'edge',
     locale: 'zh-CN',

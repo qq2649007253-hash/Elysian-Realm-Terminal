@@ -179,6 +179,11 @@ const fetchOnClient = async (params: {
   return agentRuntime.chat(data, { signal: params.signal });
 };
 
+const LEGACY_OLLAMA_MODEL_ALIASES: Record<string, string> = {
+  codeqwen: 'qwen2.5:7b',
+  qwen2: 'qwen2.5:7b',
+};
+
 export const chatCompletion = async (
   params: Partial<ChatStreamPayload>,
   options?: FetchOptions,
@@ -187,6 +192,10 @@ export const chatCompletion = async (
   const { signal } = options ?? {};
 
   let model = res.model || DEFAULT_CHAT_MODEL;
+
+  if (provider === ModelProvider.Ollama) {
+    model = LEGACY_OLLAMA_MODEL_ALIASES[model] || model;
+  }
 
   if (provider === ModelProvider.Azure) {
     const chatModelCards = modelProviderSelectors.getModelCardsById(provider)(
