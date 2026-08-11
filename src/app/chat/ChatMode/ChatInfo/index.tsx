@@ -8,6 +8,7 @@ import { Flexbox } from 'react-layout-kit';
 
 import { CHAT_HEADER_HEIGHT, SIDEBAR_WIDTH } from '@/constants/token';
 import { useGlobalStore } from '@/store/global';
+import { sessionSelectors, useSessionStore } from '@/store/session';
 
 const AgentDetail = dynamic(() => import('./AgentDetail'), {
   ssr: false,
@@ -34,10 +35,7 @@ const useStyles = createStyles(({ css }) => ({
   drawer: css`
     z-index: 10;
     border-left: 1px solid rgb(139 188 255 / 18%);
-    background:
-      linear-gradient(180deg, rgb(21 10 35 / 48%), rgb(9 13 32 / 92%) 72%, rgb(7 13 31 / 98%)),
-      linear-gradient(90deg, rgb(20 11 44 / 22%), rgb(20 11 44 / 22%)),
-      url('/elysia-profile-background.png') center top / cover no-repeat;
+    background-color: #071029;
     box-shadow: -12px 0 44px rgb(0 0 0 / 16%);
     backdrop-filter: saturate(180%) blur(18px);
   `,
@@ -46,6 +44,8 @@ const useStyles = createStyles(({ css }) => ({
 const ChatInfo = memo(() => {
   const { styles } = useStyles();
   const { md = true, lg = true } = useResponsive();
+  const agent = useSessionStore((s) => sessionSelectors.currentAgent(s), isEqual);
+  const background = agent?.meta.cover || '/elysia-profile-background.png';
 
   const [showAgentInfo, setShowAgentInfo] = useGlobalStore((s) => [
     s.showAgentInfo,
@@ -76,6 +76,9 @@ const ChatInfo = memo(() => {
       placement={'right'}
       onExpandChange={handleExpand}
       expand={showAgentInfo}
+      style={{
+        background: `linear-gradient(180deg, rgb(21 10 35 / 48%), rgb(9 13 32 / 92%) 72%, rgb(7 13 31 / 98%)), linear-gradient(90deg, rgb(20 11 44 / 22%), rgb(20 11 44 / 22%)), url(${background}) center top / cover no-repeat`,
+      }}
     >
       <div style={{ height: `calc(100vh - ${CHAT_HEADER_HEIGHT}px)`, overflowY: 'auto' }}>
         <AgentDetail />

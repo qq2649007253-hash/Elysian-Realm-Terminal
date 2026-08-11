@@ -28,14 +28,14 @@ interface Props {
 }
 
 export default (props: Props) => {
-  const { size = AVATAR_IMAGE_SIZE } = props;
+  const { avatar = STARRAIL_AVATAR_URL, size = AVATAR_IMAGE_SIZE } = props;
   const { styles } = useStyle();
   return (
     <NextImage
       className={styles}
       alt="星轨资料终端头像"
       height={size}
-      src={STARRAIL_AVATAR_URL}
+      src={avatar}
       unoptimized
       width={size}
     />

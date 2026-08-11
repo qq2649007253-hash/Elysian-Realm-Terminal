@@ -26,12 +26,15 @@ const Conversation = memo(() => {
   const { styles } = useStyles();
 
   const data = useSessionStore((s) => sessionSelectors.currentChatIDs(s), isEqual);
+  const agent = useSessionStore((s) => sessionSelectors.currentAgent(s), isEqual);
+  const background = agent?.meta.cover || '/elysia-chat-background.png';
 
   return (
     <Flexbox
       flex={1}
       className={styles.conversation}
       style={{
+        background: `linear-gradient(90deg, rgb(6 10 28 / 70%), rgb(10 13 35 / 36%) 46%, rgb(6 10 28 / 65%)), linear-gradient(0deg, rgb(6 10 28 / 28%), rgb(6 10 28 / 28%)), url(${background}) center / cover no-repeat`,
         overflowX: 'hidden',
         overflowY: 'auto',
         position: 'relative',

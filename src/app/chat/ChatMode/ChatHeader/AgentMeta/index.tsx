@@ -3,7 +3,6 @@ import { Space, Typography } from 'antd';
 import isEqual from 'lodash-es/isEqual';
 import React from 'react';
 
-import { STARRAIL_AVATAR_URL } from '@/constants/common';
 import { sessionSelectors, useSessionStore } from '@/store/session';
 
 import ModelSwitchPanel from '../actions/ModelSwitchPanel';
@@ -25,7 +24,7 @@ export default (props: AgentMetaProps) => {
 
   return (
     <div className={cx(styles.container, className)} style={style}>
-      <Avatar avatar={STARRAIL_AVATAR_URL} size={36} />
+      <Avatar avatar={meta?.avatar} size={36} />
       <div className={styles.content}>
         <div className={styles.title}>
           <Space size={4} align={'center'}>

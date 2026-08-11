@@ -25,7 +25,7 @@ const Avatar = memo<AvatarProps>(
       <div className={styles.avatarContainer}>
         <A
           animation={loading}
-          avatar={STARRAIL_AVATAR_URL}
+          avatar={avatar.avatar || STARRAIL_AVATAR_URL}
           background={avatar.backgroundColor}
           onClick={onClick}
           size={size}
