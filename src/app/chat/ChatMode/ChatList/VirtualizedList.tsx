@@ -8,6 +8,7 @@ import { useSessionStore } from '@/store/session';
 
 import AutoScroll from './AutoScroll';
 import { useStyles } from './style';
+import Welcome from './WelcomeMessage';
 
 interface VirtualizedListProps {
   className?: string;
@@ -48,6 +49,7 @@ const VirtualizedList = memo<VirtualizedListProps>(({ mobile, className, style, 
         atBottomStateChange={setAtBottom}
         atBottomThreshold={50 * (mobile ? 2 : 1)}
         computeItemKey={(_, item) => item}
+        components={{ Header: Welcome }}
         data={data}
         followOutput={getFollowOutput}
         increaseViewportBy={overscan}
