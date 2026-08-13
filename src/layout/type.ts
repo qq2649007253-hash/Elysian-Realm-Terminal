@@ -3,4 +3,5 @@ export enum HeaderNavKey {
   Discover = 'discover',
   Role = 'role',
   Settings = 'settings',
+  Studio = 'studio',
 }

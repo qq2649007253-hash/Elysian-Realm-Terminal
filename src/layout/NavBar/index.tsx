@@ -2,7 +2,7 @@
 
 import { ActionIcon, SideNav } from '@lobehub/ui';
 import { theme } from 'antd';
-import { MessageSquare, Sparkles, User } from 'lucide-react';
+import { Bot, MessageSquare, Sparkles, User } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { memo, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -41,6 +41,12 @@ const NavBar = () => {
         icon: Sparkles,
         label: '星穹图鉴',
         title: '星穹角色图鉴',
+      },
+      {
+        key: HeaderNavKey.Studio,
+        icon: Bot,
+        label: '智能体工作台',
+        title: '角色智能体工作台',
       },
     ];
   }, [t]);
